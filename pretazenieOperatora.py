@@ -10,4 +10,5 @@ troj = Trojuholnik(bod, bod2, bod3)
 print(troj.exists())
 
 #print("{} + {} = {}".format(bod, cislo, bod4))
-print(troj)
+print(troj.Obvod)
+print(troj.Obsah)
