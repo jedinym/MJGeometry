@@ -50,9 +50,17 @@ class Trojuholnik:
         # self.StranaB = Bod.get_distance_static(self.A, self.C)
         # self.StranaC = Bod.get_distance_static(self.A, self.B)
 
-        self.Strany = {"a": Bod.get_distance_static(self.B, self.C),
-                       "b": Bod.get_distance_static(self.A, self.C),
-                       "c": Bod.get_distance_static(self.A, self.B)}
+        if self.exists():
+            self.Strany = {"a": Bod.get_distance_static(self.B, self.C),
+                           "b": Bod.get_distance_static(self.A, self.C),
+                           "c": Bod.get_distance_static(self.A, self.B)}
+
+            self.Obvod = self.get_obvod()
+            self.Obsah = self.get_obsah()
+
+    def __str__(self):
+        return "Trojuholnik {} {} {} \n" \
+               "  Strany: {} {} {}".format(self.A, self.B, self.C, self.Strany["a"], self.Strany["b"], self.Strany["c"])
 
     def exists(self):
         vektor1 = Bod(self.B.X - self.A.X, self.B.Y - self.A.Y)
@@ -75,6 +83,11 @@ class Trojuholnik:
 
         return self.Strany[_strana]
 
-    def __str__(self):
-        return "Trojuholnik {} {} {} \n" \
-               "  Strany: {} {} {}".format(self.A, self.B, self.C, self.Strany["a"], self.Strany["b"], self.Strany["c"])
+    def get_obvod(self):
+        return sum(self.Strany.values())
+
+    def get_obsah(self):
+        s = self.Obvod / 2
+        return (s * (s - self.Strany["a"]) * (s - self.Strany["b"]) * (s - self.Strany["c"])) ** (1/2)
+
+
