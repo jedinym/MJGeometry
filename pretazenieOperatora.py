@@ -1,5 +1,4 @@
-from math import hypot
-from  triedy import *
+from triedy import *
 
 
 bod = Bod(1, 1)
@@ -12,3 +11,5 @@ print(troj.exists())
 #print("{} + {} = {}".format(bod, cislo, bod4))
 print(troj.Obvod)
 print(troj.Obsah)
+print(troj.Tazisko)
+
